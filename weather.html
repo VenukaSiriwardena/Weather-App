@@ -4,22 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="weather.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <title>Weather App</title>
 </head>
 <body>
-    <div class="background-image">
-        <h1 id="title">Weather Forecast</h1>
+        <h1 id="title">Weather Forecast</h1><br>
+        <p id="weather-date-time"></p>
         <div class="container">
             <div class="search-box">
-                <input type="text" class="search-bar" placeholder="Search..."><br>
-                <button class="search-btn">Search</button>
+                <input type="text" id="search-city-name" class="search-bar" placeholder="Search..."><br>
+                <div class="button-container">
+                    <button class="search-btn" onclick="searchWeather()">Search</button>
+                    <button class="search-btn" onclick="getLocation(), showPosition()">Get Location</button>
+                </div>
+                <p id="error-handling"></p>
             </div>
-            <div class="weather-status">
-                <div class="location">
-                    <!-- Weather information will go here -->
+            <div class="top-weather-status">
+                <div class="top-locations">
+                    <p>New York</p>
+                    <div id="new-y"></div>
+                    <img src="" alt=""></img>
+                </div>
+                <div class="top-locations">
+                    <p>London</p>
+                    <p></p>
+                    <img src="" alt=""></img>
+                </div>
+                <div class="top-locations">
+                    <p>Tokyo</p>
+                    <p></p>
+                    <img src="" alt=""></img>
                 </div>
             </div>
         </div>
-    </div>
+    <script src="weather.js"></script>
 </body>
 </html>
