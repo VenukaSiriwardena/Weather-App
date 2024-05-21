@@ -10,35 +10,37 @@
     <title>Weather App</title>
 </head>
 <body>
-        <h1 id="title">Weather Forecast</h1><br>
-        <p id="weather-date-time"></p>
-        <div class="container">
-            <div class="search-box">
-                <input type="text" id="search-city-name" class="search-bar" placeholder="Search..."><br>
-                <div class="button-container">
-                    <button class="search-btn" onclick="searchWeather()">Search</button>
-                    <button class="search-btn" onclick="getLocation(), showPosition()">Get Location</button>
-                </div>
-                <p id="error-handling"></p>
+    <h1 id="title">Weather Forecast</h1><br>
+    <p id="weather-date-time"></p>
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="search-city-name" class="search-bar" placeholder="Search..."><br>
+            <div class="button-container">
+                <button class="search-btn" onclick="searchWeather()">Search</button>
+                <button class="search-btn" onclick="getLocation(), showPosition()">Get Location</button>
             </div>
-            <div class="top-weather-status">
-                <div class="top-locations">
-                    <p>New York</p>
-                    <div id="new-y"></div>
-                    <img src="" alt=""></img>
-                </div>
-                <div class="top-locations">
-                    <p>London</p>
-                    <p></p>
-                    <img src="" alt=""></img>
-                </div>
-                <div class="top-locations">
-                    <p>Tokyo</p>
-                    <p></p>
-                    <img src="" alt=""></img>
-                </div>
+            <p id="error-handling"></p>
+        </div>
+
+        <div class="top-weather-status">
+            <div class="top-locations" id="top-location-1">
+                <p>Delhi</p>
+                <div id="new-y"></div>
+                <img src="" alt="">
+            </div>
+            <div class="top-locations" id="top-location-2">
+                <p>London</p>
+                <div id="london"></div>
+                <img src="" alt="">
+            </div>
+            <div class="top-locations" id="top-location-3">
+                <p>Tokyo</p>
+                <div id="tokyo"></div>
+                <img src="" alt="">
             </div>
         </div>
+        <div id="city-name"></div>
+    </div>
     <script src="weather.js"></script>
 </body>
 </html>

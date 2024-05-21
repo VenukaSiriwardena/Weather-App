@@ -79,3 +79,8 @@ body, html {
     border-radius: 10%;
     background-color: aqua;
 }
+
+#city-name{
+    width: 35%;
+    height: 70px;
+}

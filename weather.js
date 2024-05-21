@@ -17,19 +17,22 @@ window.onload = function() {
         var displayTime = date.toLocaleTimeString('en-US', timeOptions);
 
         // Update the element with the formatted date and time
-        document.getElementById('weather-date-time').innerHTML = displayDate + " " + " " + "|" + " " + " " + displayTime;
+        document.getElementById('weather-date-time').innerHTML = displayDate + " " + "|" + " " + displayTime;
     }, 1000);
+    
+    top_city_1();
+    top_city_2();
+    top_city_3();
 }
-
 
 function getLocation() {
     const location = document.getElementById("error-handling");
-  if (navigator.geolocation) {
-    location.innerHTML = "Loading..."
-    setTimeout(navigator.geolocation.getCurrentPosition(showPosition),2000);
-  } else { 
-    location.innerHTML = "Geolocation is not supported by this browser.";
-  }
+    if (navigator.geolocation) {
+        location.innerHTML = "Loading...";
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        location.innerHTML = "Geolocation is not supported by this browser.";
+    }
 }
 
 async function showPosition(position) {
@@ -46,9 +49,15 @@ async function showPosition(position) {
 
 async function searchWeather() {
     const api_key = 'd001faf11c688e6acb3d854a17606802';
-    let city_name = document.getElementById("search-city-name");
-    let set_name = city_name.value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${set_name}&appid=${api_key}&units=metric`;
+
+    let city_name = document.getElementById("search-city-name").value;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${api_key}&units=metric`;
+
+    const topWeatherStatus = document.querySelector(".top-weather-status");
+    if (topWeatherStatus) {
+        topWeatherStatus.style.display = "none";
+    }
+
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -75,9 +84,61 @@ function displayWeather(data) {
 
 async function top_city_1() {
     const api_key = 'd001faf11c688e6acb3d854a17606802';
-    const weatherDiv = document.getElementById('new-y');
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${new york}&appid=${api_key}&units=metric`;
-    const response = await fetch(url);
-    const data = await response.json();
-    weatherDiv.innerHTML = `<p>${data.main.temp} °C</p>`;
+    var weatherDiv = document.getElementById('new-y');
+    var back_colour = document.getElementById('top-location-1');
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=${api_key}&units=metric`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        weatherDiv.innerHTML = `<p>${data.main.temp} °C</p>`;
+
+        if (data.main.temp >= 26) {
+            back_colour.style.backgroundColor = 'rgb(255, 165, 0)';
+        } else {
+            back_colour.style.backgroundColor = 'rgb(0, 0, 255)';
+        }
+    } catch (error) {
+        console.error('Error fetching the weather data', error);
+    }
+}
+
+
+async function top_city_2() {
+    const api_key = 'd001faf11c688e6acb3d854a17606802';
+    let weatherDiv = document.getElementById('london');
+    var back_colour = document.getElementById('top-location-2');
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${api_key}&units=metric`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        weatherDiv.innerHTML = `<p>${data.main.temp} °C</p>`;
+
+        if (data.main.temp >= 26) {
+            back_colour.style.backgroundColor = 'rgb(255, 165, 0)';
+        } else {
+            back_colour.style.backgroundColor = 'rgb(0, 0, 255)';
+        }
+    } catch (error) {
+        console.error('Error fetching the weather data', error);
+    }
+}
+
+async function top_city_3() {
+    const api_key = 'd001faf11c688e6acb3d854a17606802';
+    let weatherDiv = document.getElementById('tokyo');
+    var back_colour = document.getElementById('top-location-3');
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=${api_key}&units=metric`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        weatherDiv.innerHTML = `<p>${data.main.temp} °C</p>`;
+
+        if (data.main.temp >= 26) {
+            back_colour.style.backgroundColor = 'rgb(255, 165, 0)';
+        } else {
+            back_colour.style.backgroundColor = 'rgb(0, 0, 255)';
+        }
+    } catch (error) {
+        console.error('Error fetching the weather data', error);
+    }
 }
