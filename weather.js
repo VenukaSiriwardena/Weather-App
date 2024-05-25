@@ -1,3 +1,17 @@
+const weatherDiv = document.getElementById('error-handling');
+const location_name = document.getElementById('city-name');
+const temperature = document.getElementById('temp');
+const weather = document.getElementById('weather-type');
+const humidity = document.getElementById('humid');
+const speed = document.getElementById('speed');
+
+weatherDiv.style.display = "none";
+location_name.style.display = "none";
+temperature.style.display = "none";
+weather.style.display = "none";
+humidity.style.display = "none";
+speed.style.display = "none";
+
 window.onload = function() {
     setInterval(function(){
         var date = new Date();
@@ -53,11 +67,6 @@ async function searchWeather() {
     let city_name = document.getElementById("search-city-name").value;
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${api_key}&units=metric`;
 
-    const topWeatherStatus = document.querySelector(".top-weather-status");
-    if (topWeatherStatus) {
-        topWeatherStatus.style.display = "none";
-    }
-
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -69,14 +78,31 @@ async function searchWeather() {
 
 function displayWeather(data) {
     const weatherDiv = document.getElementById('error-handling');
+    const location_name = document.getElementById('city-name');
+    const temperature = document.getElementById('temp');
+    const weather = document.getElementById('weather-type');
+    const humidity = document.getElementById('humid');
+    const speed = document.getElementById('speed');
     if (data.cod === 200) {
-        weatherDiv.innerHTML = `
-            <h2>${data.name}, ${data.sys.country}</h2>
-            <p>Temperature: ${data.main.temp} °C</p>
-            <p>Weather: ${data.weather[0].description}</p>
-            <p>Humidity: ${data.main.humidity} %</p>
-            <p>Wind Speed: ${data.wind.speed} m/s</p>
-        `;
+        const topWeatherStatus = document.querySelector(".top-weather-status");
+        if (topWeatherStatus) {
+            topWeatherStatus.style.display = "none";
+        } 
+        
+        weatherDiv.style.display = "block";
+        location_name.style.display = "block";
+        temperature.style.display = "block";
+        weather.style.display = "block";
+        humidity.style.display = "block";
+        speed.style.display = "block";
+
+        weatherDiv.innerHTML = "";     
+        location_name.innerHTML = `<h2 id="name">${data.name}</h2> <h2>${data.sys.country}</h2>`;
+        temperature.innerHTML = `<h2 id="name">${Math.round(data.main.temp)}</h2> <h2>°C</h2>`;
+        weather.innerHTML = `<h2 id="name">${data.weather[0].description.charAt(0).toUpperCase() + data.weather[0].description.slice(1)}</h2>`;
+        humidity.innerHTML = `<h2 id="name">${data.main.humidity}</h2> <h2>%</h2>`;
+        speed.innerHTML = `<h2 id="name">${data.wind.speed}</h2> <h2>m/s</h2>`;
+
     } else {
         weatherDiv.innerHTML = `<p>City not found!</p>`;
     }

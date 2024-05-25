@@ -1,5 +1,5 @@
 body, html {
-    height: 90%;
+    height: 95%;
     margin: 0;
     font-family: Arial, sans-serif;
 }
@@ -38,8 +38,16 @@ body, html {
 .search-bar {
     width: 90%;
     height: 30px;
-    border: 10px;
     padding: 5px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.search-bar:focus {
+    border-color: #007bff;
 }
 
 .button-container {
@@ -78,9 +86,73 @@ body, html {
     height: 140px;
     border-radius: 10%;
     background-color: aqua;
+    color: azure;
+}
+
+.result{
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 #city-name{
-    width: 35%;
-    height: 70px;
+    color: azure;
+    border-radius: 25px;
+    background: #212fad;
+    padding: 20px;
+    width: 300px;
+    height: 150px;
+}
+
+#name{
+    font-size: 40px;
+    margin-bottom: 0%;
+}
+
+#temp{
+    color: azure;
+    border-radius: 25px;
+    background: #212fad;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+
+#weather-type-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#weather-type{
+    color: azure;
+    border-radius: 25px;
+    background: #212fad;
+    padding: 20px;
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#humid{
+    color: azure;
+    border-radius: 25px;
+    background: #212fad;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
+}
+
+#speed{
+    color: azure;
+    border-radius: 25px;
+    background: #212fad;
+    padding: 20px;
+    width: 200px;
+    height: 150px;
 }
